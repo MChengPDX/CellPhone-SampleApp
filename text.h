@@ -1,4 +1,4 @@
-#include "string.h"
+#include "string_mc.h"
 #include <iostream>
 
 class Text
@@ -25,6 +25,9 @@ class Node : public Text
 
     public:
         Node();
+        Node(const Node &);
+        Node(const Text &);
+        Node(char * n, String t);
         ~Node();
         
         Node *& get_next();

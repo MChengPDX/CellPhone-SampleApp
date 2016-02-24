@@ -1,3 +1,4 @@
+#include "text.h"
 #include "ui.h"
 #include<iostream>
 #include<cstring>
@@ -5,6 +6,14 @@ using namespace std;
 
 int main()
 {
+    Hashtable o;
+    char m[] = "hello";
+    String A;
+    A = "ASDFSFSFAF";
+    o.insert(m, A);
+    o.find_one(m);
+    o.display_all();
+    /*
     bool done = false;
     ui interface;
     while(!done)
@@ -32,5 +41,6 @@ int main()
                 cout << "Not a valid option, pick again." << endl;
         }
     }
+    */
 
 }

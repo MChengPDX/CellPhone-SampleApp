@@ -1,5 +1,5 @@
 #include<cstring>
-#include "string.h"
+#include "string_mc.h"
 using std::cout;
 using std::endl;
 using std::cin;
@@ -22,6 +22,15 @@ String::String(const char * s)
     str = new char[len + 1]; //allot storage
     std::strcpy(str, s); //initailize pointer
     num_strings++; //set object count
+
+}
+
+String::String(const String & from)
+{
+    len = std::strlen(from.str);
+    str = new char [len + 1];
+    std::strcpy(str, from.str);
+    num_strings++;
 
 }
 
