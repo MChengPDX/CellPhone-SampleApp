@@ -1,10 +1,64 @@
-#include"ui.h"
+#include "ui.h"
+
+void ui::Text_App()
+{
+    char name1 [] = "Michael";
+    char name2 [] = "Karla";
+    char name3 [] = "Random Person";
+    String test1;
+    String test2;
+    String test3;
+    String test4;
+    test1 = "Test string 1";
+    test2 = "Test string 2";
+    test3 = "Test string 3";
+    test4 = "Test string 4";
+
+    Hashtable o;
+    o.insert(name1, test1);
+    o.insert(name1, test2);
+    o.insert(name2, test1);
+    o.insert(name2, test3);
+    o.insert(name2, test4);
+    o.insert(name3, test1);
+    o.insert(name3, test4);
+    char option;
+    bool done = false;
+    while(!done)
+    {
+        cout << "Text Messaging Application" << endl;
+        cout << "A. Display all text." << endl;
+        cout << "B. Find a sender." << endl;
+        cout << "C. Remove sender and text " << endl;
+        cout << "D. Exit " << endl;
+        cin >> option;
+        cin.ignore();
+        switch(toupper(option))
+        {
+            case 'A':
+                o.display_all();
+                break;
+            case 'B':
+                char tofind[100];
+                cout << "Type a name to find : " << endl;
+                cin.get(tofind, 100, '\n');
+                cin.ignore(100, '\n');
+                o.find_one(tofind);
+                break;
+            case 'D':
+                cout <<"Exiting text application. " << endl;
+                done = true;
+                break;
+            default:
+                cout << "Invalid option, try again. " << endl;
+        }
+    }
+}
 
 void ui::Calc_App()
 {
     char option;
     bool done = false;
-
 
     //switch statement to perform what operator to do
     while(!done)

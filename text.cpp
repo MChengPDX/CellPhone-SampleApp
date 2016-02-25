@@ -117,9 +117,19 @@ int Hashtable::insert(char * name, String text_m)
 {
     int hash_value = hash_function(name);
     Node * temp = new Node(name, text_m);
-    array_list[hash_value] = temp;
-    array_list[hash_value] ->display_item();
-    
+    if(array_list[hash_value] == NULL)
+    {
+        array_list[hash_value] = temp;
+        temp->get_next() = NULL;
+        return 1;
+    }
+    else
+    {
+        Node * hold = array_list[hash_value]->get_next();
+        array_list[hash_value]->get_next() = temp;
+        temp->get_next() = hold;
+        return 1;
+    }
 
 }
 
@@ -134,7 +144,11 @@ int Hashtable::find_one(char * name)
     }
     else
     {
-        temp->display_item();
+        while(temp!=NULL)
+        {
+            temp->display_item();
+            temp = temp->get_next();
+        }
         return 1;
     }
 }

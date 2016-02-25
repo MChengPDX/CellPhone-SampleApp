@@ -1,4 +1,3 @@
-#include "text.h"
 #include "ui.h"
 #include<iostream>
 #include<cstring>
@@ -6,14 +5,6 @@ using namespace std;
 
 int main()
 {
-    Hashtable o;
-    char m[] = "hello";
-    String A;
-    A = "ASDFSFSFAF";
-    o.insert(m, A);
-    o.find_one(m);
-    o.display_all();
-    /*
     bool done = false;
     ui interface;
     while(!done)
@@ -23,6 +14,7 @@ int main()
         cout <<"A. Calculator " << endl;
         cout <<"B. Maze Game " << endl;
         cout <<"C. View Text Messages " << endl;
+        cout <<"D. Exit " << endl;
         cin >> option;
         switch (toupper(option))
         {
@@ -32,6 +24,7 @@ int main()
             case 'B':
                 break;
             case 'C':
+                interface.Text_App();
                 break;
             case 'D':
                 cout << "Application closing. Goodbye " << endl;
@@ -41,6 +34,5 @@ int main()
                 cout << "Not a valid option, pick again." << endl;
         }
     }
-    */
 
 }
