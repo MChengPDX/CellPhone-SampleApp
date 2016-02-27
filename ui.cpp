@@ -1,5 +1,25 @@
 #include "ui.h"
 
+void ui::Maze_App()
+{
+    //Bulding the Maze
+    Maze b;
+    b.insert(5);
+    b.insert(4);
+    b.insert(6);
+    b.insert(3);
+    b.insert(2);
+    b.insert(8);
+    b.insert(9);
+    b.insert(6);
+    b.insert(2);
+    b.insert(100);
+   
+    b.move();
+}
+
+
+
 void ui::Text_App()
 {
     char name1 [] = "Michael";

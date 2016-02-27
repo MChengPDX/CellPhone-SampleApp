@@ -22,14 +22,9 @@ Maze::Maze()
     root = NULL;
 }
 
-bool Maze::isEmpty()
+Maze::~Maze()
 {
-    return root == NULL;
-}
 
-void Maze::makeEmpty()
-{
-    root = NULL;
 }
 
 void Maze::insert(int data)
@@ -151,38 +146,59 @@ void Maze::test()
     cout << "Current root " << root->data << endl;
 }
 
-void Maze::checkOrders()
+
+
+Bnode * Maze::advance_r(Bnode * current)
 {
-    cout << "inorder successor is : ";
-    inorder(root);
-    cout << endl;
-
-    cout <<"preorder succesor is : ";
-    preorder(root);
-    cout << endl;
-
-    cout <<"postorder successor is : ";
-    postorder(root);
-    cout << endl;
+    cout <<"You are current at " << current->data << endl;
+    current = current->left;
+    cout <<"After moving left, you are at " << current->data << endl;
+    return current;
 }
 
-void Maze::inorder(Bnode * root)
+Bnode * Maze::advance_l(Bnode * current)
 {
-    if(!root)
+    cout << "You are current at " << current->data << endl;
+    current = current->right;
+    cout <<"After moving right, you are at " << current->data << endl;
+    return current;
+}
+
+void Maze::move()
+{
+    Bnode * current = root;
+    int value = 0;
+    bool done = false;
+    while(!done)
     {
-        inorder(root->left);
-        cout << "The data " << root->data << endl;
-        inorder(root->right);
+        cout << "This is currently current " << current -> data << endl;
+        cout << "Enter what direction to go, 1 for LEFT and 2 for RIGHT." << endl;
+        cin >> value;
+        cout << "This is again current " << current -> data << endl;
+        current = advance(value, current);
+        if(current->data == 100)
+        {
+            cout << "You win! " << endl;
+            done = true;
+            return;
+        }
+        else
+            continue;
+
+    }
+}
+
+Bnode * Maze::advance(int value, Bnode * current)
+{
+    if(value == 1)
+    {
+       current =  advance_l(current);
+       return current;
+    }
+    if(value == 2);
+    {
+        current = advance_r(current);
+        return current;
     }
 
 }
-
-void Maze::preorder(Bnode * root)
-{
-
-}
-
-void Maze::postorder(Bnode * root)
-{
-}
-

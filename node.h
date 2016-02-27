@@ -21,10 +21,10 @@ class Maze
         Bnode * root;
     public:
         Maze();
+        ~Maze();
+        void remove_all(Bnode * root);
         void display_all();
         void display_all(Bnode * root);
-        bool isEmpty();
-        void makeEmpty();
         void insert(int data);
         int height(Bnode * root);
         int max (int a, int b);
@@ -50,6 +50,10 @@ class Maze
         void inorder(Bnode * root);
         void preorder(Bnode * root);
         void postorder(Bnode * root);
-
+       
+        Bnode * advance_l(Bnode * root);
+        Bnode * advance_r(Bnode * root);
+        void move();
+        Bnode * advance(int value, Bnode * current); 
 
 };

@@ -1,5 +1,4 @@
 
-#include"node.h"
 
 #include "ui.h"
 #include<iostream>
@@ -8,18 +7,6 @@ using namespace std;
 
 int main()
 {
-    Maze m;
-    m.insert(5);
-    m.insert(2);
-    m.insert(4);
-    m.insert(5);
-    m.insert(5);
-    m.insert(4);
-    m.insert(3);
-    //m.display_all();
-    //m.test();
-    m.checkOrders();
-    /*
     bool done = false;
     ui interface;
     while(!done)
@@ -37,6 +24,7 @@ int main()
                 interface.Calc_App();
                 break;
             case 'B':
+                interface.Maze_App();
                 break;
             case 'C':
                 interface.Text_App();
@@ -49,6 +37,5 @@ int main()
                 cout << "Not a valid option, pick again." << endl;
         }
     }
-    */
-
 }
+
