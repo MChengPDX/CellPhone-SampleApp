@@ -150,16 +150,30 @@ void Maze::test()
 
 Bnode * Maze::advance_r(Bnode * current)
 {
+    if(current->right == NULL)
+    {
+        Bnode * dead;
+        dead->data = 500;
+        cout << "Can't go left, you reached a dead end and fell off the cliff" << endl;
+        return dead;
+    }
     cout <<"You are current at " << current->data << endl;
-    current = current->left;
+    current = current->right;
     cout <<"After moving left, you are at " << current->data << endl;
     return current;
 }
 
 Bnode * Maze::advance_l(Bnode * current)
 {
+    if(current->left == NULL)
+    {
+        Bnode * dead;
+        dead->data = 500;
+        cout << "Can't go left, you reached a dead end and fell off the cliff" << endl;
+        return dead;
+    }
     cout << "You are current at " << current->data << endl;
-    current = current->right;
+    current = current->left;
     cout <<"After moving right, you are at " << current->data << endl;
     return current;
 }
@@ -195,10 +209,15 @@ Bnode * Maze::advance(int value, Bnode * current)
        current =  advance_l(current);
        return current;
     }
-    if(value == 2);
+    if(value == 2)
     {
         current = advance_r(current);
         return current;
+    }
+    else
+    {
+        cout << "Invalid" << endl;
+        return 0;
     }
 
 }
