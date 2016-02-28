@@ -1,9 +1,28 @@
+/*
+ * Michael Cheng
+ * CS 202 Program 3
+ * Winter 2016
+ *
+ * main.cpp
+ *
+ * Provides an entrance to the program. Within this main, it wil
+ * ask the user what application he/she would like to use.
+ *
+ * This program provides a simple stiumlation of what a basic cellphone 
+ * application in the stone age would look like/do.
+ *
+ * Calculator application using operator overloading
+ * texting messaging application stored through a hash table with channing
+ * maze game through a self balancing tree with 3 pointers, one going left, right and back.
+ * 
+ */
 
 
 #include "ui.h"
 #include<iostream>
 #include<cstring>
 using namespace std;
+
 
 int main()
 {

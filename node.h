@@ -1,16 +1,28 @@
 
 
 
-
-
 class Bnode
 {
-    public:
+    private:
         int height, data;
         Bnode * left;
         Bnode * right;
+        Bnode * prev;
+        
+    public:
         Bnode(int n);
         ~Bnode();
+        int get_data();
+        int get_height();
+        
+        int display_data();
+
+        int set_data(int value);
+        int set_height(int value);
+
+        Bnode *& get_left();
+        Bnode *& get_right();
+        Bnode *& get_prev();
 
 };
 
@@ -22,6 +34,7 @@ class Maze
     public:
         Maze();
         ~Maze();
+        void remove_all();
         void remove_all(Bnode * root);
         void display_all();
         void display_all(Bnode * root);
@@ -46,14 +59,20 @@ class Maze
         void display_left(Bnode * root);
         void display_right(Bnode * root);
 
+
         void checkOrders();
         void inorder(Bnode * root);
         void preorder(Bnode * root);
         void postorder(Bnode * root);
-       
+      
+        Bnode * go_back(Bnode * root);
         Bnode * advance_l(Bnode * root);
         Bnode * advance_r(Bnode * root);
         void move();
-        Bnode * advance(int value, Bnode * current); 
+        Bnode * advance(int value, Bnode * current);
+
+        //setting previous pointers
+        void set_previous(Bnode * ptr, Bnode * ptr2);
+        void set_previous();
 
 };

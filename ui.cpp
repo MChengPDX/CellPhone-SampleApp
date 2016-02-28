@@ -15,7 +15,12 @@ void ui::Maze_App()
     b.insert(2);
     b.insert(100);
    
-    b.move();
+    b.display_all();
+    b.set_previous();
+    b.remove_all();
+    b.display_all();
+ //   b.move();
+
 }
 
 
@@ -49,10 +54,9 @@ void ui::Text_App()
         cout << "Text Messaging Application" << endl;
         cout << "A. Display all text." << endl;
         cout << "B. Find a sender." << endl;
-        cout << "C. Remove sender and text " << endl;
+        cout << "C. Remove all text. " << endl;
         cout << "D. Exit " << endl;
-        cin >> option;
-        cin.ignore();
+        option = cin.get();
         switch(toupper(option))
         {
             case 'A':
@@ -64,6 +68,9 @@ void ui::Text_App()
                 cin.get(tofind, 100, '\n');
                 cin.ignore(100, '\n');
                 o.find_one(tofind);
+                break;
+            case 'C':
+                o.remove_all();
                 break;
             case 'D':
                 cout <<"Exiting text application. " << endl;
@@ -102,7 +109,7 @@ void ui::Calc_App()
         cout <<"D. Division(a/b)" << endl;
         cout <<"E. Exit " << endl;
         cin >> option;
-        cin.ignore();
+        cin.ignore(256, '\n');
         cout << endl;
 
         switch(toupper(option))

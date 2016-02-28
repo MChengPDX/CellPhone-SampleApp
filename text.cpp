@@ -70,7 +70,6 @@ Node::Node(char * n, String t):Text(t, n)
 //Destructor
 Node::~Node()
 {
-    delete next;
 }
 
 //Return next value
@@ -84,10 +83,10 @@ Node *& Node::get_next()
 //constructor
 Hashtable::Hashtable()
 {
-    array_size = 100;
+    array_size = 10;
     //was segfualting till I added this.
     array_list = new Node * [array_size];
-    for(int i = 0; i != 100; i++)
+    for(int i = 0; i != 10; i++)
     {
         array_list[array_size] = NULL;
     }
@@ -97,7 +96,33 @@ Hashtable::Hashtable()
 //destructor
 Hashtable::~Hashtable()
 {
+    remove_all();
 
+}
+
+//remove all
+int Hashtable::remove_all()
+{
+    for(int i = 0; i < array_size; i++)
+    {
+        if(array_list[i] == NULL)
+        {
+            cout << "No element to be deleted" << endl;
+            return 0;
+        }
+        Node * temp = array_list[i];
+        while(temp != NULL)
+        {
+            Node * current = temp->get_next();
+            delete temp;
+            temp = current;
+
+        }
+        array_list[i] = NULL;
+    }
+    delete [] array_list;
+
+    
 }
 
 //determine hash value of senders name to
