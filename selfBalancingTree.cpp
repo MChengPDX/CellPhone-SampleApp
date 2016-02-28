@@ -71,17 +71,23 @@ Maze::Maze()
     root = NULL;
 }
 
+
+//destructor
 Maze::~Maze()
 {
     remove_all();
 
 }
 
+
+//remove all wrapper
 void Maze::remove_all()
 {
     remove_all(root);
 }
 
+
+//remove all 
 void Maze::remove_all(Bnode * root)
 {
     if(!root)
@@ -110,6 +116,8 @@ int Maze::max(int x, int y)
     return x > y ? x : y;
 }
 
+
+//insertion
 Bnode * Maze:: insert(int data, Bnode * root)
 {
     if(!root)
@@ -142,6 +150,7 @@ Bnode * Maze:: insert(int data, Bnode * root)
 
  }
 
+//left rotate
 Bnode * Maze::RLC(Bnode * root)
 {
     Bnode * temp = root->get_left();
@@ -156,6 +165,8 @@ Bnode * Maze::RLC(Bnode * root)
 
 }
 
+
+//right rotate 
 Bnode * Maze::RRC(Bnode * root)
 {
     int v1 = 0;
@@ -170,6 +181,8 @@ Bnode * Maze::RRC(Bnode * root)
     return temp;
 }
 
+
+//double rotate a node with left child
 Bnode * Maze::DWLC(Bnode * root)
 {
     root->get_left() = RLC(root->get_left());
@@ -177,12 +190,15 @@ Bnode * Maze::DWLC(Bnode * root)
 }
 
 
+//double rotate a node with right child
 Bnode * Maze::DWRC(Bnode * root)
 {
     root->get_right() = RLC(root->get_right());
     return RRC(root);
 }
 
+
+//count the number of nodes
 int Maze::countBnodes(Bnode * root)
 {
     if(!root)
@@ -196,12 +212,16 @@ int Maze::countBnodes(Bnode * root)
     }
 }
 
+
+///display all wrapper
 void Maze::display_all()
 {
     cout << "Displaying the whole tree " << endl;
     display_all(root);
 }
 
+
+//displaying all items in the balance search tree
 void Maze::display_all(Bnode * root)
 {
     if(!root)
@@ -213,6 +233,8 @@ void Maze::display_all(Bnode * root)
     display_all(root->get_right());
 }
 
+
+//test functiuon to see if all nodes were balance properly
 void Maze::test()
 {
     cout << "Display all get_left() " << endl;
@@ -223,6 +245,7 @@ void Maze::test()
 }
 
 
+//moving back
 Bnode * Maze::go_back(Bnode * current)
 {
     if(current->get_prev() == NULL)
@@ -237,6 +260,8 @@ Bnode * Maze::go_back(Bnode * current)
 
 }
 
+
+//moving the user right
 Bnode * Maze::advance_r(Bnode * current)
 {
     if(current->get_right() == NULL)
@@ -250,6 +275,8 @@ Bnode * Maze::advance_r(Bnode * current)
     return current;
 }
 
+
+//moving the user left
 Bnode * Maze::advance_l(Bnode * current)
 {
     if(current->get_left() == NULL)
@@ -263,6 +290,9 @@ Bnode * Maze::advance_l(Bnode * current)
     return current;
 }
 
+
+//give user the option to move
+//while the user has not beat the game, he/she cant not exit out of the application
 void Maze::move()
 {
     Bnode * current = root;
@@ -289,6 +319,8 @@ void Maze::move()
     }
 }
 
+
+//captures user input and deterine where to move the pointers
 Bnode * Maze::advance(int value, Bnode * current)
 {
     if(value == 1)
@@ -313,8 +345,13 @@ Bnode * Maze::advance(int value, Bnode * current)
     }
 }
 
-//setting previous pointers
+//setting previous pointers so user has the
+//option to go back when they are stuck
+//or go back whenever they want
 
+//set_previous wrapper
+//sets the root to null, then pass in root left and root
+//right to the other set_previous function
 void Maze::set_previous()
 {
     root->get_prev() = NULL;
@@ -322,6 +359,9 @@ void Maze::set_previous()
     set_previous(root->get_right(), root);
 }
 
+//makes two ptr, one for the following ptr and one to
+//hold the previous. as it recur, it will
+//attach the nodes
 void Maze::set_previous(Bnode * ptr, Bnode *p_ptr)
 {
     if(!ptr)
@@ -335,6 +375,7 @@ void Maze::set_previous(Bnode * ptr, Bnode *p_ptr)
     set_previous(ptr->get_left(),p_ptr->get_left());
     set_previous(ptr->get_right(), p_ptr->get_right());
 
+    //if we are at the end, attach and return back to the stack
     if(ptr->get_left() == NULL)
     {
         ptr->get_prev() = p_ptr;

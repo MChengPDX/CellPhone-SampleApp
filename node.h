@@ -1,3 +1,11 @@
+/*
+ * Michael Cheng
+ * CS 202 Program 3
+ * Winter 2016
+ *
+ * node.h
+ *
+ */
 
 
 
@@ -70,6 +78,11 @@ class Maze
         Bnode * advance_r(Bnode * root);
         void move();
         Bnode * advance(int value, Bnode * current);
+
+        //operator overloading to move
+        //Bnode & Maze operator >> (Bnode & to_move); //moving right
+        //Bnode & Maze operator << (Bnode & to_move); //move left
+
 
         //setting previous pointers
         void set_previous(Bnode * ptr, Bnode * ptr2);
