@@ -1,4 +1,3 @@
-
 #include"node.h"
 #include<iostream>
 using namespace std;
@@ -117,7 +116,9 @@ int Maze::max(int x, int y)
 }
 
 
-//insertion
+//insertion, checks for height each time at insertion
+// if it is 2, rotate
+// else just insert
 Bnode * Maze:: insert(int data, Bnode * root)
 {
     if(!root)
@@ -370,8 +371,8 @@ void Maze::set_previous(Bnode * ptr, Bnode *p_ptr)
         return;
     
     ptr->get_prev() = p_ptr;
-    cout << "This is ptr " << ptr-> get_data() << endl;
-    cout << "This is p_h " << p_ptr-> get_data() << endl;
+   // cout << "This is ptr " << ptr-> get_data() << endl;
+   // cout << "This is p_h " << p_ptr-> get_data() << endl;
     set_previous(ptr->get_left(),p_ptr->get_left());
     set_previous(ptr->get_right(), p_ptr->get_right());
 

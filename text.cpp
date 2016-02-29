@@ -97,6 +97,7 @@ Hashtable::Hashtable()
 Hashtable::~Hashtable()
 {
     remove_all();
+    delete [] array_list;
 
 }
 

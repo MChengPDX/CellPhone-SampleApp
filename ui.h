@@ -1,3 +1,12 @@
+/*
+ * Michael Cheng
+ * CS 202 Program 3
+ * Winter 2016
+ *
+ * ui..h
+ * Holds class prototypes to implement the interfaces
+ */
+
 
 #include "node.h"
 #include "text.h"

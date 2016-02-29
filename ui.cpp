@@ -1,5 +1,16 @@
+/*
+ * Michael Cheng
+ * CS 202 Program 3
+ * Winter 2016
+ *
+ * ui.cpp
+ * Calls on function within calc.cpp, text.cpp and maze.cpp. Acts like a manger
+ * or glue class and binds all these parts together into one working application
+ */
+
 #include "ui.h"
 
+//mazing application interface
 void ui::Maze_App()
 {
     //Bulding the Maze
@@ -14,17 +25,48 @@ void ui::Maze_App()
     b.insert(6);
     b.insert(2);
     b.insert(100);
-   
-    b.display_all();
     b.set_previous();
-    b.remove_all();
-    b.display_all();
- //   b.move();
-
+    //Options
+    bool done = false;
+    char option; 
+    while(!done)
+    {
+        cout << "HINT if you go all the way right, you win the game " << endl;
+        cout << "A. Play the game." << endl;
+        cout << "B. Exit." << endl;
+        cout << "Testing Functions." << endl;
+        cout << "C. Display All. " << endl;
+        cout << "D. Remove All. " << endl;
+        cin.ignore();
+        option = cin.get();
+        cin.clear();
+        switch(toupper(option))
+        {
+            case'A':
+                b.move();
+                done = true;
+                break;
+            case'B':
+                done = true;
+                break;
+            case'C':
+                b.display_all();
+                break;
+            case'D':
+                b.remove_all();
+                cout <<"Tree has been deleted, now exiting out of appplication";
+                cout << endl;
+                done = true;
+                break;
+            default:
+                cout << "Not valid option." << endl;
+                break;
+        }
+    }
 }
 
 
-
+//texting application interface
 void ui::Text_App()
 {
     char name1 [] = "Michael";
@@ -56,6 +98,7 @@ void ui::Text_App()
         cout << "B. Find a sender." << endl;
         cout << "C. Remove all text. " << endl;
         cout << "D. Exit " << endl;
+        cin.ignore();
         option = cin.get();
         switch(toupper(option))
         {
@@ -82,6 +125,8 @@ void ui::Text_App()
     }
 }
 
+
+//Calculator application interface
 void ui::Calc_App()
 {
     char option;
@@ -94,10 +139,12 @@ void ui::Calc_App()
         int value2 = 0;
         cout << "Enter first value : " << endl;
         cin >> value1;
-        cin.ignore();
+        cin.ignore(256, '\n');
+        cin.clear();
         cout << "Enter second value : " << endl;
         cin >> value2;
-        cin.ignore();
+        cin.ignore(256, '\n');
+        cin.clear();
         Data result;
         Data d1(value1);
         Data d2(value2);
@@ -106,9 +153,9 @@ void ui::Calc_App()
         cout <<"A. Addition(+)" << endl;
         cout <<"B. Subtraction(-)" << endl;
         cout <<"C. Multiplication(x)" << endl;
-        cout <<"D. Division(a/b)" << endl;
+      //  cout <<"D. Division(a/b)" << endl;
         cout <<"E. Exit " << endl;
-        cin >> option;
+        option = cin.get();
         cin.ignore(256, '\n');
         cout << endl;
 
@@ -138,9 +185,11 @@ void ui::Calc_App()
                 value1 = 0;
                 value2 = 0;
                 break;
+                /*
             case 'D':
 
                 break;
+                */
             case 'E':
                 cout <<"Exiting out of calculator application " << endl;
                 done = true;
